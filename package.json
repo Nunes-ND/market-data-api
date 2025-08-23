@@ -33,7 +33,7 @@
 		"test:watch": "vitest",
 		"test:unit": "vitest run unit",
 		"test:integration": "vitest run integration",
-		"db:generate": "drizzle-kit push --config=drizzle.config.ts",
+		"db:generate": "drizzle-kit generate --config=drizzle.config.ts",
 		"db:push": "drizzle-kit push --config=drizzle.config.ts",
 		"prepare": "husky"
 	},

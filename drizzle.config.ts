@@ -19,7 +19,7 @@ const dbOptions = process.env.NODE_ENV
 	: dbEnvOptions.PRODUCTION;
 
 export default {
-	schema: './src/models/database/schema.ts',
+	schema: './src/database/schemas',
 	out: './drizzle',
 	dialect: 'postgresql',
 	...dbOptions,
