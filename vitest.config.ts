@@ -37,6 +37,11 @@ export default defineConfig(({ mode }) => ({
 				test: {
 					name: { label: 'integration', color: 'yellow' },
 					include: ['src/**/*.integration.test.ts'],
+					globalSetup: ['tests/setups/global.setup.ts'],
+					setupFiles: ['tests/setups/integration.setup.ts'],
+					threads: {
+						singleThread: true,
+					},
 				},
 			},
 		],
