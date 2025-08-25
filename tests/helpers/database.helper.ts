@@ -7,7 +7,7 @@ import type { DBClient } from '../../src/database';
 import * as schema from '../../src/database/schemas';
 
 export async function setupTestDatabase(databasePath: string) {
-	console.info('Checking if local database exists...', databasePath);
+	console.info('Checking if local database exists...');
 	if (!existsSync(databasePath)) {
 		console.info('Local database not found, creating and migrating...');
 		const client = new PGlite(databasePath);
