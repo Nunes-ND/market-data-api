@@ -5,7 +5,7 @@ import {
 	createProductRecord,
 } from '@/tests/factories/product.factory';
 import type { DBClient } from '../database';
-import { Product, type ProductData } from '../models/product.model';
+import { type ProductData, ProductModel } from '../models/product.model';
 import { ProductController } from './product.controller';
 
 vi.mock('../models/product.model');
@@ -14,13 +14,13 @@ describe('Product controller', () => {
 	describe('handleSave', () => {
 		let productData: ProductData;
 		let productRecord: ProductRecord;
-		let productModel: Product;
+		let productModel: ProductModel;
 		let productControllerSut: ProductController;
 
 		beforeEach(() => {
 			productData = createProductData();
 			productRecord = createProductRecord();
-			productModel = new Product({} as DBClient);
+			productModel = new ProductModel({} as DBClient);
 			productModel.save = vi.fn().mockResolvedValue(productRecord);
 			productControllerSut = new ProductController(productModel);
 			vi.clearAllMocks();

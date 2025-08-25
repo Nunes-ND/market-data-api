@@ -9,7 +9,7 @@ import {
 	type ProductRecord,
 	productSchema,
 } from '../database/schemas/product.schema';
-import { Product, type ProductData } from './product.model';
+import { type ProductData, ProductModel } from './product.model';
 
 describe('Product model', () => {
 	describe('save', () => {
@@ -23,7 +23,7 @@ describe('Product model', () => {
 		it('should save a product and call the database methods correctly', async () => {
 			const mockDb = createDbMock();
 			mockDb.returning.mockResolvedValue([productDataStub]);
-			const productSut = new Product(mockDb as unknown as DBClient);
+			const productSut = new ProductModel(mockDb as unknown as DBClient);
 
 			const result = await productSut.save(productData);
 
@@ -37,7 +37,7 @@ describe('Product model', () => {
 			const mockDb = createDbMock();
 			const dbError = new Error('Database constraint violation');
 			mockDb.returning.mockRejectedValue(dbError);
-			const productSut = new Product(mockDb as unknown as DBClient);
+			const productSut = new ProductModel(mockDb as unknown as DBClient);
 
 			await expect(productSut.save(productData)).rejects.toThrow(dbError);
 

@@ -2,13 +2,13 @@ import { describe, expect, it } from 'vitest';
 import type { DBClient } from '@/database';
 import { createProductData } from '@/tests/factories/product.factory';
 import { db } from '@/tests/setups/integration.setup';
-import { Product, type ProductData } from './product.model';
+import { type ProductData, ProductModel } from './product.model';
 
 describe('Product model', () => {
 	describe('save', () => {
 		it('should save a product', async () => {
 			const productData = createProductData();
-			const productSut = new Product(db as unknown as DBClient);
+			const productSut = new ProductModel(db as unknown as DBClient);
 
 			const result = await productSut.save(productData);
 
@@ -27,7 +27,7 @@ describe('Product model', () => {
 		it.each(invalidCases)(
 			'should not save a product with no $field',
 			async ({ data }) => {
-				const productSut = new Product(db as unknown as DBClient);
+				const productSut = new ProductModel(db as unknown as DBClient);
 
 				await expect(productSut.save(data as ProductData)).rejects.toThrow();
 			},

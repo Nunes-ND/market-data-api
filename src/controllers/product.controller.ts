@@ -1,4 +1,4 @@
-import type { Product, ProductData } from '@/models/product.model';
+import type { ProductData, ProductModel } from '@/models/product.model';
 
 export type ProductProps = {
 	id: string;
@@ -7,7 +7,7 @@ export type ProductProps = {
 };
 
 export class ProductController {
-	constructor(private readonly productModel: Product) {}
+	constructor(private readonly productModel: ProductModel) {}
 
 	async handleSave(
 		productData: ProductData,

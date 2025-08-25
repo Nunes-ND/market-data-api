@@ -1,18 +1,18 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { createProductData } from '@/tests/factories/product.factory';
 import { db } from '@/tests/setups/integration.setup';
-import { Product, type ProductData } from '../models/product.model';
+import { type ProductData, ProductModel } from '../models/product.model';
 import { ProductController, type ProductProps } from './product.controller';
 
 describe('Product controller', () => {
 	describe('handleSave', () => {
 		let productData: ProductData;
-		let productModel: Product;
+		let productModel: ProductModel;
 		let productControllerSut: ProductController;
 
 		beforeEach(() => {
 			productData = createProductData();
-			productModel = new Product(db);
+			productModel = new ProductModel(db);
 			productControllerSut = new ProductController(productModel);
 		});
 

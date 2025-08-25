@@ -9,7 +9,7 @@ export type ProductData = {
 	price: number;
 };
 
-export class Product {
+export class ProductModel {
 	constructor(private readonly db: DBClient) {}
 
 	async save(productData: ProductData): Promise<ProductRecord> {
