@@ -39,8 +39,11 @@ export default defineConfig(({ mode }) => ({
 					include: ['src/**/*.integration.test.ts'],
 					globalSetup: ['tests/setups/global.setup.ts'],
 					setupFiles: ['tests/setups/integration.setup.ts'],
-					threads: {
-						singleThread: true,
+					pool: 'forks',
+					poolOptions: {
+						forks: {
+							singleFork: true,
+						},
 					},
 				},
 			},
